@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutIndexRouteImport } from './routes/about.index'
+import { Route as AboutSectionRouteImport } from './routes/about.$section'
+import { Route as GetInvolvedIndexRouteImport } from './routes/get-involved.index'
+import { Route as GetInvolvedSectionRouteImport } from './routes/get-involved.$section'
+import { Route as GovernanceIndexRouteImport } from './routes/governance.index'
+import { Route as GovernanceSectionRouteImport } from './routes/governance.$section'
+import { Route as PartnersIndexRouteImport } from './routes/partners.index'
+import { Route as PartnersSectionRouteImport } from './routes/partners.$section'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesSectionRouteImport } from './routes/resources.$section'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutSectionRoute = AboutSectionRouteImport.update({
+  id: '/about/$section',
+  path: '/about/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetInvolvedIndexRoute = GetInvolvedIndexRouteImport.update({
+  id: '/get-involved/',
+  path: '/get-involved/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetInvolvedSectionRoute = GetInvolvedSectionRouteImport.update({
+  id: '/get-involved/$section',
+  path: '/get-involved/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceIndexRoute = GovernanceIndexRouteImport.update({
+  id: '/governance/',
+  path: '/governance/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceSectionRoute = GovernanceSectionRouteImport.update({
+  id: '/governance/$section',
+  path: '/governance/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersIndexRoute = PartnersIndexRouteImport.update({
+  id: '/partners/',
+  path: '/partners/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersSectionRoute = PartnersSectionRouteImport.update({
+  id: '/partners/$section',
+  path: '/partners/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesSectionRoute = ResourcesSectionRouteImport.update({
+  id: '/resources/$section',
+  path: '/resources/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about/$section': typeof AboutSectionRoute
+  '/get-involved/$section': typeof GetInvolvedSectionRoute
+  '/governance/$section': typeof GovernanceSectionRoute
+  '/partners/$section': typeof PartnersSectionRoute
+  '/resources/$section': typeof ResourcesSectionRoute
+  '/about/': typeof AboutIndexRoute
+  '/get-involved/': typeof GetInvolvedIndexRoute
+  '/governance/': typeof GovernanceIndexRoute
+  '/partners/': typeof PartnersIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about/$section': typeof AboutSectionRoute
+  '/get-involved/$section': typeof GetInvolvedSectionRoute
+  '/governance/$section': typeof GovernanceSectionRoute
+  '/partners/$section': typeof PartnersSectionRoute
+  '/resources/$section': typeof ResourcesSectionRoute
+  '/about': typeof AboutIndexRoute
+  '/get-involved': typeof GetInvolvedIndexRoute
+  '/governance': typeof GovernanceIndexRoute
+  '/partners': typeof PartnersIndexRoute
+  '/resources': typeof ResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about/$section': typeof AboutSectionRoute
+  '/get-involved/$section': typeof GetInvolvedSectionRoute
+  '/governance/$section': typeof GovernanceSectionRoute
+  '/partners/$section': typeof PartnersSectionRoute
+  '/resources/$section': typeof ResourcesSectionRoute
+  '/about/': typeof AboutIndexRoute
+  '/get-involved/': typeof GetInvolvedIndexRoute
+  '/governance/': typeof GovernanceIndexRoute
+  '/partners/': typeof PartnersIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about/$section'
+    | '/get-involved/$section'
+    | '/governance/$section'
+    | '/partners/$section'
+    | '/resources/$section'
+    | '/about/'
+    | '/get-involved/'
+    | '/governance/'
+    | '/partners/'
+    | '/resources/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about/$section'
+    | '/get-involved/$section'
+    | '/governance/$section'
+    | '/partners/$section'
+    | '/resources/$section'
+    | '/about'
+    | '/get-involved'
+    | '/governance'
+    | '/partners'
+    | '/resources'
+  id:
+    | '__root__'
+    | '/'
+    | '/about/$section'
+    | '/get-involved/$section'
+    | '/governance/$section'
+    | '/partners/$section'
+    | '/resources/$section'
+    | '/about/'
+    | '/get-involved/'
+    | '/governance/'
+    | '/partners/'
+    | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutSectionRoute: typeof AboutSectionRoute
+  GetInvolvedSectionRoute: typeof GetInvolvedSectionRoute
+  GovernanceSectionRoute: typeof GovernanceSectionRoute
+  PartnersSectionRoute: typeof PartnersSectionRoute
+  ResourcesSectionRoute: typeof ResourcesSectionRoute
+  AboutIndexRoute: typeof AboutIndexRoute
+  GetInvolvedIndexRoute: typeof GetInvolvedIndexRoute
+  GovernanceIndexRoute: typeof GovernanceIndexRoute
+  PartnersIndexRoute: typeof PartnersIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/$section': {
+      id: '/about/$section'
+      path: '/about/$section'
+      fullPath: '/about/$section'
+      preLoaderRoute: typeof AboutSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-involved/': {
+      id: '/get-involved/'
+      path: '/get-involved'
+      fullPath: '/get-involved/'
+      preLoaderRoute: typeof GetInvolvedIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-involved/$section': {
+      id: '/get-involved/$section'
+      path: '/get-involved/$section'
+      fullPath: '/get-involved/$section'
+      preLoaderRoute: typeof GetInvolvedSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance/': {
+      id: '/governance/'
+      path: '/governance'
+      fullPath: '/governance/'
+      preLoaderRoute: typeof GovernanceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance/$section': {
+      id: '/governance/$section'
+      path: '/governance/$section'
+      fullPath: '/governance/$section'
+      preLoaderRoute: typeof GovernanceSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners/': {
+      id: '/partners/'
+      path: '/partners'
+      fullPath: '/partners/'
+      preLoaderRoute: typeof PartnersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners/$section': {
+      id: '/partners/$section'
+      path: '/partners/$section'
+      fullPath: '/partners/$section'
+      preLoaderRoute: typeof PartnersSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/$section': {
+      id: '/resources/$section'
+      path: '/resources/$section'
+      fullPath: '/resources/$section'
+      preLoaderRoute: typeof ResourcesSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutSectionRoute: AboutSectionRoute,
+  GetInvolvedSectionRoute: GetInvolvedSectionRoute,
+  GovernanceSectionRoute: GovernanceSectionRoute,
+  PartnersSectionRoute: PartnersSectionRoute,
+  ResourcesSectionRoute: ResourcesSectionRoute,
+  AboutIndexRoute: AboutIndexRoute,
+  GetInvolvedIndexRoute: GetInvolvedIndexRoute,
+  GovernanceIndexRoute: GovernanceIndexRoute,
+  PartnersIndexRoute: PartnersIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
