@@ -12,7 +12,7 @@ export function NewsletterForm() {
       onSubmit={(e) => {
         e.preventDefault();
         const r = schema.safeParse(email);
-        if (!r.success) return setMsg({ ok: false, text: r.error.issues[0].message });
+        if (!r.success) return setMsg({ ok: false, text: r.error.issues[0]?.message ?? "Invalid email" });
         setMsg({ ok: true, text: "Thank you — you'll hear from us soon." });
         setEmail("");
       }}

@@ -6,7 +6,7 @@ import { OrgChart } from "@/components/common/OrgChart";
 
 export const Route = createFileRoute("/governance/$section")({
   loader: ({ params }) => {
-    const page = SECTIONS["governance"].pages[params.section];
+    const page = SECTIONS["governance"]!.pages[params.section];
     if (!page) throw notFound();
     return { title: page.title, intro: page.intro };
   },

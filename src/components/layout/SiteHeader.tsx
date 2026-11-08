@@ -86,7 +86,7 @@ export function SiteHeader() {
               <Link to="/contact">Contact Us</Link>
             </Button>
             <Button asChild variant="accent" className="hidden sm:inline-flex">
-              <Link to="/get-involved/support-us">Support Us</Link>
+              <Link to="/get-involved/$section" params={{ section: "support-us" }}>Support Us</Link>
             </Button>
             <button
               className="rounded-md p-2 text-heading xl:hidden"

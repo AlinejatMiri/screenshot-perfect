@@ -6,7 +6,7 @@ import { Gallery } from "@/components/common/Gallery";
 
 export const Route = createFileRoute("/resources/$section")({
   loader: ({ params }) => {
-    const page = SECTIONS["resources"].pages[params.section];
+    const page = SECTIONS["resources"]!.pages[params.section];
     if (!page) throw notFound();
     return { title: page.title, intro: page.intro };
   },

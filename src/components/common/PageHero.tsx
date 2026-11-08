@@ -15,7 +15,7 @@ export function PageHero({
   eyebrow?: string;
   title: string;
   intro?: string;
-  image?: string;
+  image?: string | undefined;
   crumbs?: Crumb[];
   children?: ReactNode;
 }) {

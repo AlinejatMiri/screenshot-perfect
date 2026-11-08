@@ -10,20 +10,88 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as ComplaintsRouteImport } from './routes/complaints'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FeedbackRouteImport } from './routes/feedback'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as TargetGroupsRouteImport } from './routes/target-groups'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as WhereWeWorkRouteImport } from './routes/where-we-work'
 import { Route as AboutIndexRouteImport } from './routes/about.index'
 import { Route as AboutSectionRouteImport } from './routes/about.$section'
 import { Route as GetInvolvedIndexRouteImport } from './routes/get-involved.index'
 import { Route as GetInvolvedSectionRouteImport } from './routes/get-involved.$section'
 import { Route as GovernanceIndexRouteImport } from './routes/governance.index'
 import { Route as GovernanceSectionRouteImport } from './routes/governance.$section'
+import { Route as NewsIndexRouteImport } from './routes/news.index'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as PartnersIndexRouteImport } from './routes/partners.index'
 import { Route as PartnersSectionRouteImport } from './routes/partners.$section'
+import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
+import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
+import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
+import { Route as ProjectsOngoingRouteImport } from './routes/projects.ongoing'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesSectionRouteImport } from './routes/resources.$section'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplaintsRoute = ComplaintsRouteImport.update({
+  id: '/complaints',
+  path: '/complaints',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TargetGroupsRoute = TargetGroupsRouteImport.update({
+  id: '/target-groups',
+  path: '/target-groups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhereWeWorkRoute = WhereWeWorkRouteImport.update({
+  id: '/where-we-work',
+  path: '/where-we-work',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutIndexRoute = AboutIndexRouteImport.update({
@@ -56,6 +124,16 @@ const GovernanceSectionRoute = GovernanceSectionRouteImport.update({
   path: '/governance/$section',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartnersIndexRoute = PartnersIndexRouteImport.update({
   id: '/partners/',
   path: '/partners/',
@@ -64,6 +142,36 @@ const PartnersIndexRoute = PartnersIndexRouteImport.update({
 const PartnersSectionRoute = PartnersSectionRouteImport.update({
   id: '/partners/$section',
   path: '/partners/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
+  id: '/programs/',
+  path: '/programs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
+  id: '/programs/$slug',
+  path: '/programs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects/$slug',
+  path: '/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
+  id: '/projects/completed',
+  path: '/projects/completed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsOngoingRoute = ProjectsOngoingRouteImport.update({
+  id: '/projects/ongoing',
+  path: '/projects/ongoing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
@@ -79,97 +187,223 @@ const ResourcesSectionRoute = ResourcesSectionRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/complaints': typeof ComplaintsRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/feedback': typeof FeedbackRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap': typeof SitemapRoute
+  '/target-groups': typeof TargetGroupsRoute
+  '/terms': typeof TermsRoute
+  '/where-we-work': typeof WhereWeWorkRoute
   '/about/$section': typeof AboutSectionRoute
   '/get-involved/$section': typeof GetInvolvedSectionRoute
   '/governance/$section': typeof GovernanceSectionRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/partners/$section': typeof PartnersSectionRoute
+  '/programs/$slug': typeof ProgramsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
+  '/projects/ongoing': typeof ProjectsOngoingRoute
   '/resources/$section': typeof ResourcesSectionRoute
   '/about/': typeof AboutIndexRoute
   '/get-involved/': typeof GetInvolvedIndexRoute
   '/governance/': typeof GovernanceIndexRoute
+  '/news/': typeof NewsIndexRoute
   '/partners/': typeof PartnersIndexRoute
+  '/programs/': typeof ProgramsIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/complaints': typeof ComplaintsRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/feedback': typeof FeedbackRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap': typeof SitemapRoute
+  '/target-groups': typeof TargetGroupsRoute
+  '/terms': typeof TermsRoute
+  '/where-we-work': typeof WhereWeWorkRoute
   '/about/$section': typeof AboutSectionRoute
   '/get-involved/$section': typeof GetInvolvedSectionRoute
   '/governance/$section': typeof GovernanceSectionRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/partners/$section': typeof PartnersSectionRoute
+  '/programs/$slug': typeof ProgramsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
+  '/projects/ongoing': typeof ProjectsOngoingRoute
   '/resources/$section': typeof ResourcesSectionRoute
   '/about': typeof AboutIndexRoute
   '/get-involved': typeof GetInvolvedIndexRoute
   '/governance': typeof GovernanceIndexRoute
+  '/news': typeof NewsIndexRoute
   '/partners': typeof PartnersIndexRoute
+  '/programs': typeof ProgramsIndexRoute
+  '/projects': typeof ProjectsIndexRoute
   '/resources': typeof ResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/complaints': typeof ComplaintsRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/feedback': typeof FeedbackRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap': typeof SitemapRoute
+  '/target-groups': typeof TargetGroupsRoute
+  '/terms': typeof TermsRoute
+  '/where-we-work': typeof WhereWeWorkRoute
   '/about/$section': typeof AboutSectionRoute
   '/get-involved/$section': typeof GetInvolvedSectionRoute
   '/governance/$section': typeof GovernanceSectionRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/partners/$section': typeof PartnersSectionRoute
+  '/programs/$slug': typeof ProgramsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
+  '/projects/ongoing': typeof ProjectsOngoingRoute
   '/resources/$section': typeof ResourcesSectionRoute
   '/about/': typeof AboutIndexRoute
   '/get-involved/': typeof GetInvolvedIndexRoute
   '/governance/': typeof GovernanceIndexRoute
+  '/news/': typeof NewsIndexRoute
   '/partners/': typeof PartnersIndexRoute
+  '/programs/': typeof ProgramsIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/accessibility'
+    | '/complaints'
+    | '/contact'
+    | '/faq'
+    | '/feedback'
+    | '/privacy-policy'
+    | '/sitemap'
+    | '/target-groups'
+    | '/terms'
+    | '/where-we-work'
     | '/about/$section'
     | '/get-involved/$section'
     | '/governance/$section'
+    | '/news/$slug'
     | '/partners/$section'
+    | '/programs/$slug'
+    | '/projects/$slug'
+    | '/projects/completed'
+    | '/projects/ongoing'
     | '/resources/$section'
     | '/about/'
     | '/get-involved/'
     | '/governance/'
+    | '/news/'
     | '/partners/'
+    | '/programs/'
+    | '/projects/'
     | '/resources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/accessibility'
+    | '/complaints'
+    | '/contact'
+    | '/faq'
+    | '/feedback'
+    | '/privacy-policy'
+    | '/sitemap'
+    | '/target-groups'
+    | '/terms'
+    | '/where-we-work'
     | '/about/$section'
     | '/get-involved/$section'
     | '/governance/$section'
+    | '/news/$slug'
     | '/partners/$section'
+    | '/programs/$slug'
+    | '/projects/$slug'
+    | '/projects/completed'
+    | '/projects/ongoing'
     | '/resources/$section'
     | '/about'
     | '/get-involved'
     | '/governance'
+    | '/news'
     | '/partners'
+    | '/programs'
+    | '/projects'
     | '/resources'
   id:
     | '__root__'
     | '/'
+    | '/accessibility'
+    | '/complaints'
+    | '/contact'
+    | '/faq'
+    | '/feedback'
+    | '/privacy-policy'
+    | '/sitemap'
+    | '/target-groups'
+    | '/terms'
+    | '/where-we-work'
     | '/about/$section'
     | '/get-involved/$section'
     | '/governance/$section'
+    | '/news/$slug'
     | '/partners/$section'
+    | '/programs/$slug'
+    | '/projects/$slug'
+    | '/projects/completed'
+    | '/projects/ongoing'
     | '/resources/$section'
     | '/about/'
     | '/get-involved/'
     | '/governance/'
+    | '/news/'
     | '/partners/'
+    | '/programs/'
+    | '/projects/'
     | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessibilityRoute: typeof AccessibilityRoute
+  ComplaintsRoute: typeof ComplaintsRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  FeedbackRoute: typeof FeedbackRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  SitemapRoute: typeof SitemapRoute
+  TargetGroupsRoute: typeof TargetGroupsRoute
+  TermsRoute: typeof TermsRoute
+  WhereWeWorkRoute: typeof WhereWeWorkRoute
   AboutSectionRoute: typeof AboutSectionRoute
   GetInvolvedSectionRoute: typeof GetInvolvedSectionRoute
   GovernanceSectionRoute: typeof GovernanceSectionRoute
+  NewsSlugRoute: typeof NewsSlugRoute
   PartnersSectionRoute: typeof PartnersSectionRoute
+  ProgramsSlugRoute: typeof ProgramsSlugRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+  ProjectsCompletedRoute: typeof ProjectsCompletedRoute
+  ProjectsOngoingRoute: typeof ProjectsOngoingRoute
   ResourcesSectionRoute: typeof ResourcesSectionRoute
   AboutIndexRoute: typeof AboutIndexRoute
   GetInvolvedIndexRoute: typeof GetInvolvedIndexRoute
   GovernanceIndexRoute: typeof GovernanceIndexRoute
+  NewsIndexRoute: typeof NewsIndexRoute
   PartnersIndexRoute: typeof PartnersIndexRoute
+  ProgramsIndexRoute: typeof ProgramsIndexRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
@@ -180,6 +414,76 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/complaints': {
+      id: '/complaints'
+      path: '/complaints'
+      fullPath: '/complaints'
+      preLoaderRoute: typeof ComplaintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/target-groups': {
+      id: '/target-groups'
+      path: '/target-groups'
+      fullPath: '/target-groups'
+      preLoaderRoute: typeof TargetGroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/where-we-work': {
+      id: '/where-we-work'
+      path: '/where-we-work'
+      fullPath: '/where-we-work'
+      preLoaderRoute: typeof WhereWeWorkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about/': {
@@ -224,6 +528,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GovernanceSectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/': {
+      id: '/news/'
+      path: '/news'
+      fullPath: '/news/'
+      preLoaderRoute: typeof NewsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/partners/': {
       id: '/partners/'
       path: '/partners'
@@ -236,6 +554,48 @@ declare module '@tanstack/react-router' {
       path: '/partners/$section'
       fullPath: '/partners/$section'
       preLoaderRoute: typeof PartnersSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/': {
+      id: '/programs/'
+      path: '/programs'
+      fullPath: '/programs/'
+      preLoaderRoute: typeof ProgramsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/$slug': {
+      id: '/programs/$slug'
+      path: '/programs/$slug'
+      fullPath: '/programs/$slug'
+      preLoaderRoute: typeof ProgramsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/completed': {
+      id: '/projects/completed'
+      path: '/projects/completed'
+      fullPath: '/projects/completed'
+      preLoaderRoute: typeof ProjectsCompletedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/ongoing': {
+      id: '/projects/ongoing'
+      path: '/projects/ongoing'
+      fullPath: '/projects/ongoing'
+      preLoaderRoute: typeof ProjectsOngoingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources/': {
@@ -257,15 +617,33 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessibilityRoute: AccessibilityRoute,
+  ComplaintsRoute: ComplaintsRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  FeedbackRoute: FeedbackRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  SitemapRoute: SitemapRoute,
+  TargetGroupsRoute: TargetGroupsRoute,
+  TermsRoute: TermsRoute,
+  WhereWeWorkRoute: WhereWeWorkRoute,
   AboutSectionRoute: AboutSectionRoute,
   GetInvolvedSectionRoute: GetInvolvedSectionRoute,
   GovernanceSectionRoute: GovernanceSectionRoute,
+  NewsSlugRoute: NewsSlugRoute,
   PartnersSectionRoute: PartnersSectionRoute,
+  ProgramsSlugRoute: ProgramsSlugRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
+  ProjectsCompletedRoute: ProjectsCompletedRoute,
+  ProjectsOngoingRoute: ProjectsOngoingRoute,
   ResourcesSectionRoute: ResourcesSectionRoute,
   AboutIndexRoute: AboutIndexRoute,
   GetInvolvedIndexRoute: GetInvolvedIndexRoute,
   GovernanceIndexRoute: GovernanceIndexRoute,
+  NewsIndexRoute: NewsIndexRoute,
   PartnersIndexRoute: PartnersIndexRoute,
+  ProgramsIndexRoute: ProgramsIndexRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport

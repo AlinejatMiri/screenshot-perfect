@@ -56,7 +56,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10 bg-hero-overlay" />
       <div className="container-x flex min-h-[640px] flex-col justify-center py-24">
         <p key={i} className="animate-fade-up mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-navy-foreground/30 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-accent">
-          {SLIDES[i].kicker}
+          {SLIDES[i]?.kicker}
         </p>
         <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.08] text-navy-foreground md:text-6xl">
           Empowering Women. Strengthening Communities. <span className="text-accent">Creating Sustainable Change.</span>
@@ -66,7 +66,7 @@ function Hero() {
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
           <Button asChild variant="accent" size="lg"><Link to="/programs">Explore our work <ArrowRight /></Link></Button>
-          <Button asChild variant="heroGhost" size="lg"><Link to="/partners/become-a-partner">Partner with us</Link></Button>
+          <Button asChild variant="heroGhost" size="lg"><Link to="/partners/$section" params={{ section: "become-a-partner" }}>Partner with us</Link></Button>
         </div>
         <div className="mt-14 flex gap-2" role="tablist" aria-label="Slides">
           {SLIDES.map((s, idx) => (
@@ -121,7 +121,7 @@ function Home() {
           <p className="text-lg leading-relaxed">
             {ORG.name} is a national, non-governmental, non-profit organization registered with the Ministry of Economy ({ORG.license}). We work with poor and marginalized women, their families and communities on livelihoods, education, health, agriculture and protection.
           </p>
-          <Button asChild variant="link" className="mt-4 px-0 text-base"><Link to="/about/who-we-are">More about PWSO <ArrowRight /></Link></Button>
+          <Button asChild variant="link" className="mt-4 px-0 text-base"><Link to="/about/$section" params={{ section: "who-we-are" }}>More about PWSO <ArrowRight /></Link></Button>
         </div>
         <ul className="grid gap-4 sm:grid-cols-3">
           {ORG.offices.map((o) => (
@@ -212,7 +212,7 @@ function Home() {
               </li>
             ))}
           </ul>
-          <Link to="/resources/publications" className="mt-6 flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-card hover:border-primary">
+          <Link to="/resources/$section" params={{ section: "publications" }} className="mt-6 flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-card hover:border-primary">
             <FileText className="h-8 w-8 text-primary" aria-hidden />
             <span><span className="block font-bold text-heading">PWSO Profile 2026</span><span className="text-sm text-muted-foreground">Organizational profile — coming soon</span></span>
           </Link>

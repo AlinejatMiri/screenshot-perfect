@@ -24,10 +24,10 @@ export function Gallery() {
           </li>
         ))}
       </ul>
-      {open !== null && (
+      {open !== null && IMAGES[open] && (
         <div role="dialog" aria-modal="true" aria-label="Image viewer" className="fixed inset-0 z-[70] grid place-items-center bg-navy/90 p-6" onClick={() => setOpen(null)}>
           <button className="absolute right-6 top-6 text-navy-foreground" aria-label="Close"><X className="h-7 w-7" /></button>
-          <img src={IMAGES[open].src} alt={IMAGES[open].alt} className="max-h-[85vh] rounded-xl" />
+          <img src={IMAGES[open]!.src} alt={IMAGES[open]!.alt} className="max-h-[85vh] rounded-xl" />
         </div>
       )}
     </>

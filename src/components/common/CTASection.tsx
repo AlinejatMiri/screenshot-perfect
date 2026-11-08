@@ -15,7 +15,7 @@ export function CTASection({
             <p className="mt-3 opacity-85">{text}</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button asChild variant="accent" size="lg"><Link to="/partners/become-a-partner">Become a partner</Link></Button>
+            <Button asChild variant="accent" size="lg"><Link to="/partners/$section" params={{ section: "become-a-partner" }}>Become a partner</Link></Button>
             <Button asChild variant="heroGhost" size="lg"><Link to="/contact">Contact us</Link></Button>
           </div>
         </div>

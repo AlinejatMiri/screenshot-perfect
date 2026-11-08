@@ -7,8 +7,8 @@ import { CTASection } from "./CTASection";
 
 type LinkRender = (slug: string, children: ReactNode, className: string) => ReactNode;
 
-export function SectionOverview({ sectionKey, base, link, image }: { sectionKey: string; base: string; link: LinkRender; image?: string }) {
-  const s = SECTIONS[sectionKey];
+export function SectionOverview({ sectionKey, base, link, image }: { sectionKey: string; base: string; link: LinkRender; image?: string | undefined }) {
+  const s = SECTIONS[sectionKey]!;
   return (
     <>
       <PageHero title={s.title} intro={s.intro} image={image} crumbs={[{ label: s.title }]} />
@@ -46,12 +46,12 @@ export function SectionDetail({
   sectionKey: string;
   slug: string;
   overviewTo: string;
-  variant?: "list" | "grid" | "timeline";
+  variant?: "list" | "grid" | "timeline" | undefined;
   children?: ReactNode;
   link: LinkRender;
 }) {
-  const s = SECTIONS[sectionKey];
-  const p = s.pages[slug];
+  const s = SECTIONS[sectionKey]!;
+  const p = s.pages[slug]!;
   return (
     <>
       <PageHero eyebrow={s.title} title={p.title} intro={p.intro} crumbs={[{ label: s.title, to: overviewTo }, { label: p.title }]} />

@@ -2,7 +2,7 @@ import { CheckCircle2 } from "lucide-react";
 import type { Block } from "@/data/pages";
 import { Todo } from "./PageHero";
 
-export function ContentBlocks({ blocks, variant = "list" }: { blocks: Block[]; variant?: "list" | "grid" | "timeline" }) {
+export function ContentBlocks({ blocks, variant = "list" }: { blocks: Block[]; variant?: "list" | "grid" | "timeline" | undefined }) {
   if (variant === "timeline") {
     return (
       <ol className="relative ml-3 border-l-2 border-secondary">

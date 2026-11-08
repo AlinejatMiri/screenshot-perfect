@@ -5,7 +5,7 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/partners/$section")({
   loader: ({ params }) => {
-    const page = SECTIONS["partners"].pages[params.section];
+    const page = SECTIONS["partners"]!.pages[params.section];
     if (!page) throw notFound();
     return { title: page.title, intro: page.intro };
   },

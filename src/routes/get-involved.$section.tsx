@@ -6,7 +6,7 @@ import { Todo } from "@/components/common/PageHero";
 
 export const Route = createFileRoute("/get-involved/$section")({
   loader: ({ params }) => {
-    const page = SECTIONS["get-involved"].pages[params.section];
+    const page = SECTIONS["get-involved"]!.pages[params.section];
     if (!page) throw notFound();
     return { title: page.title, intro: page.intro };
   },
