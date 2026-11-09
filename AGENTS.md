@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## PWSO site
+- Site content lives in typed data modules under src/data (site/nav, programs, projects, pages, news); routes render from them so content can later move to a database without page rewrites.
+- Section subpages (about, governance, partners, resources, get-involved) use one `$section` route each backed by SECTIONS in src/data/pages.ts; add pages there, not new route files.
+- Unverified organizational facts are shown with the Todo component / todo-flag, never invented.

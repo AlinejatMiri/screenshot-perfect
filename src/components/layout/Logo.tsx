@@ -7,11 +7,12 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
       <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary font-display text-sm font-extrabold text-primary-foreground">
         PW<span className="text-accent">SO</span>
       </span>
-      <span className="leading-tight">
+      <span className="whitespace-nowrap leading-tight">
         <span className={`block font-display text-[0.95rem] font-extrabold ${inverted ? "text-navy-foreground" : "text-heading"}`}>
-          Poor Women Support Organization
+          <span className="2xl:hidden">PWSO</span>
+          <span className="hidden 2xl:inline">Poor Women Support Organization</span>
         </span>
-        <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent">Partnership for Change</span>
+        <span className="hidden text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent sm:block xl:hidden 2xl:block">Partnership for Change</span>
       </span>
     </Link>
   );

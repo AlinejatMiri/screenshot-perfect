@@ -44,7 +44,7 @@ export function SiteHeader() {
                   <Link
                     to={item.to}
                     activeOptions={{ exact: item.to === "/" }}
-                    className="inline-flex items-center gap-1 rounded-md px-2.5 py-2 text-[0.9rem] font-medium text-heading hover:text-primary data-[status=active]:text-primary"
+                    className="inline-flex items-center gap-1 whitespace-nowrap rounded-md px-2 py-2 text-sm font-medium text-heading hover:text-primary data-[status=active]:text-primary"
                   >
                     {item.label}
                     {item.groups && <ChevronDown className="h-3.5 w-3.5 opacity-60 transition group-hover:rotate-180" aria-hidden />}
@@ -82,7 +82,7 @@ export function SiteHeader() {
             </ul>
           </nav>
           <div className="flex items-center gap-2">
-            <Button asChild variant="outline" className="hidden md:inline-flex">
+            <Button asChild variant="outline" className="hidden md:inline-flex xl:hidden 2xl:inline-flex">
               <Link to="/contact">Contact Us</Link>
             </Button>
             <Button asChild variant="accent" className="hidden sm:inline-flex">
