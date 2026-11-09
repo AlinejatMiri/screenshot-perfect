@@ -46,7 +46,7 @@ function WhereWeWork() {
               <AfghanistanMap onSelect={setSel} />
             </Suspense>
           </ClientOnly>
-          <p className="mb-10 mt-3 text-xs text-muted-foreground">Hover a city to see projects. Orange: projects implemented · Blue: office · Light: no project yet.</p>
+          <p className="mb-10 mt-3 text-xs text-muted-foreground">Hover a province to see projects. Orange: projects implemented · Blue: office only · Light: no project yet.</p>
           <h2 className="text-3xl font-extrabold">{sel}</h2>
           <p className="mt-2 text-muted-foreground">{office ? `${office.type} · ` : ""}{projects.length} project{projects.length === 1 ? "" : "s"} listed</p>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
