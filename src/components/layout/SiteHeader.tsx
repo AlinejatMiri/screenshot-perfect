@@ -37,8 +37,8 @@ export function SiteHeader() {
       <div className="border-b border-border bg-card/95 backdrop-blur">
         <div className="container-x flex h-18 items-center justify-between gap-6 py-3">
           <Logo />
-          <nav aria-label="Main" className="hidden xl:block">
-            <ul className="flex items-center gap-0.5">
+          <nav aria-label="Main" className="hidden 2xl:block">
+            <ul className="flex items-center gap-0">
               {NAV.map((item) => (
                 <li key={item.label} className="group relative">
                   <Link
@@ -82,14 +82,14 @@ export function SiteHeader() {
             </ul>
           </nav>
           <div className="flex items-center gap-2">
-            <Button asChild variant="outline" className="hidden md:inline-flex xl:hidden 2xl:inline-flex">
+            <Button asChild variant="outline" className="hidden md:inline-flex">
               <Link to="/contact">Contact Us</Link>
             </Button>
             <Button asChild variant="accent" className="hidden sm:inline-flex">
               <Link to="/get-involved/$section" params={{ section: "support-us" }}>Support Us</Link>
             </Button>
             <button
-              className="rounded-md p-2 text-heading xl:hidden"
+              className="rounded-md p-2 text-heading 2xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -99,7 +99,7 @@ export function SiteHeader() {
           </div>
         </div>
         {open && (
-          <nav aria-label="Mobile" className="max-h-[75vh] overflow-y-auto border-t border-border bg-card xl:hidden">
+          <nav aria-label="Mobile" className="max-h-[75vh] overflow-y-auto border-t border-border bg-card 2xl:hidden">
             <ul className="container-x py-3">
               {NAV.map((item) => (
                 <li key={item.label} className="border-b border-border last:border-0">

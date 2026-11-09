@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ClientOnly, createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense, useState } from "react";
+const AfghanistanMap = lazy(() => import("@/components/common/AfghanistanMap"));
 import { Building2, MapPin } from "lucide-react";
-import { PageHero, Todo } from "@/components/common/PageHero";
+import { PageHero } from "@/components/common/PageHero";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { PROJECTS } from "@/data/projects";
 import { ORG } from "@/data/site";
@@ -38,9 +39,14 @@ function WhereWeWork() {
               );
             })}
           </ul>
-          <div className="mt-6"><Todo>Interactive Afghanistan map with verified office coordinates</Todo></div>
         </div>
-        <div>
+        <div className="min-w-0">
+          <ClientOnly fallback={<div className="h-[420px] rounded-2xl bg-muted" />}>
+            <Suspense fallback={<div className="h-[420px] rounded-2xl bg-muted" />}>
+              <AfghanistanMap onSelect={setSel} />
+            </Suspense>
+          </ClientOnly>
+          <p className="mb-10 mt-3 text-xs text-muted-foreground">Hover a city to see projects. Orange: projects implemented · Blue: office · Light: no project yet.</p>
           <h2 className="text-3xl font-extrabold">{sel}</h2>
           <p className="mt-2 text-muted-foreground">{office ? `${office.type} · ` : ""}{projects.length} project{projects.length === 1 ? "" : "s"} listed</p>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
