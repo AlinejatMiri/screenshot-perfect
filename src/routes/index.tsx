@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Building2, Calendar, FileText, MapPin } from "lucide-react";
+import { ArrowRight, Building2, Calendar, FileText, FolderCheck, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading, Todo } from "@/components/common/PageHero";
 import { CTASection } from "@/components/common/CTASection";
@@ -88,18 +88,22 @@ function Hero() {
 function Stats() {
   const totalWomen = 25 + 250;
   const stats = [
-    { v: ORG.established, l: "Year established" },
-    { v: PROJECTS.length, l: "Projects in portfolio" },
-    { v: new Set(PROJECTS.map((p) => p.province)).size, l: "Provinces reached" },
-    { v: ORG.offices.length, l: "Offices" },
+    { v: ORG.established, l: "Year established", icon: Calendar },
+    { v: PROJECTS.length, l: "Projects in portfolio", icon: FolderCheck },
+    { v: new Set(PROJECTS.map((p) => p.province)).size, l: "Provinces reached", icon: MapPin },
+    { v: ORG.offices.length, l: "Offices", icon: Building2 },
   ];
   return (
-    <section className="container-x relative z-10 -mt-14">
-      <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-border bg-card shadow-lift md:grid-cols-4">
+    <section aria-label="PWSO key numbers" className="border-b border-border bg-card">
+      <div className="container-x grid grid-cols-2 py-5 md:grid-cols-4 md:py-8">
         {stats.map((s) => (
-          <div key={s.l} className="border-border p-6 text-center odd:border-r md:border-r md:last:border-r-0">
-            <p className="font-display text-4xl font-extrabold text-primary">{s.v}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{s.l}</p>
+          <div key={s.l} className="flex min-w-0 flex-col items-center border-border px-3 py-6 text-center odd:border-r md:border-r md:last:border-r-0">
+            <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <s.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+            </span>
+            <p className="font-display text-4xl font-extrabold leading-none text-heading md:text-5xl">{s.v}</p>
+            <span className="mt-4 h-0.5 w-7 bg-accent" aria-hidden="true" />
+            <p className="mt-3 text-sm font-medium text-muted-foreground">{s.l}</p>
           </div>
         ))}
       </div>
