@@ -19,7 +19,7 @@ const quick = [
 export function SiteFooter() {
   return (
     <footer className="bg-navy text-navy-foreground">
-      <div className="container-x grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+      <div className="container-x grid grid-cols-[minmax(0,1fr)] gap-10 py-12 md:grid-cols-2 md:py-16 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.3fr)]">
         <div>
           <Logo inverted />
           <p className="mt-5 max-w-sm text-sm leading-relaxed opacity-80">

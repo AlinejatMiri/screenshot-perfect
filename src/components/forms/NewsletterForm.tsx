@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
+import { Button } from "@/components/ui/button";
 
 const schema = z.string().trim().email("Enter a valid email").max(255);
 
@@ -18,7 +19,7 @@ export function NewsletterForm() {
       }}
       className="space-y-2"
     >
-      <div className="flex overflow-hidden rounded-lg border border-sidebar-border bg-sidebar-accent focus-within:ring-2 focus-within:ring-accent">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] overflow-hidden rounded-lg border border-sidebar-border bg-sidebar-accent focus-within:ring-2 focus-within:ring-accent">
         <label htmlFor="nl-email" className="sr-only">Email address</label>
         <input
           id="nl-email"
@@ -28,7 +29,7 @@ export function NewsletterForm() {
           placeholder="Your email"
           className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-navy-foreground placeholder:opacity-60 focus:outline-none"
         />
-        <button className="bg-accent px-4 text-sm font-semibold text-accent-foreground hover:opacity-90">Subscribe</button>
+        <Button type="submit" variant="accent" className="h-full shrink-0 rounded-none px-3">Subscribe</Button>
       </div>
       {msg && <p role="status" className={`text-xs ${msg.ok ? "text-accent" : "text-destructive"}`}>{msg.text}</p>}
     </form>

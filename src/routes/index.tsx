@@ -54,11 +54,11 @@ function Hero() {
         />
       ))}
       <div className="absolute inset-0 -z-10 bg-hero-overlay" />
-      <div className="container-x flex min-h-[640px] flex-col justify-center py-24">
+      <div className="container-x flex min-h-[520px] flex-col justify-center py-12 sm:min-h-[560px] sm:py-16 lg:min-h-[640px] lg:py-20">
         <p key={i} className="animate-fade-up mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-navy-foreground/30 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-accent">
           {SLIDES[i]?.kicker}
         </p>
-        <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.08] text-navy-foreground md:text-6xl">
+        <h1 className="max-w-3xl break-words text-3xl font-extrabold leading-[1.08] text-navy-foreground sm:text-4xl lg:text-6xl">
           Empowering Women. Strengthening Communities. <span className="text-accent">Creating Sustainable Change.</span>
         </h1>
         <p className="mt-6 max-w-xl text-lg opacity-90">
@@ -68,7 +68,7 @@ function Hero() {
           <Button asChild variant="accent" size="lg"><Link to="/programs">Explore our work <ArrowRight /></Link></Button>
           <Button asChild variant="heroGhost" size="lg"><Link to="/partners/$section" params={{ section: "become-a-partner" }}>Partner with us</Link></Button>
         </div>
-        <div className="mt-14 flex gap-2" role="tablist" aria-label="Slides">
+        <div className="mt-8 flex gap-2 lg:mt-14" role="tablist" aria-label="Slides">
           {SLIDES.map((s, idx) => (
             <button
               key={s.kicker}
@@ -144,9 +144,9 @@ function Home() {
             <SectionHeading eyebrow="What we do" title="Five thematic areas, five technical programs" />
             <Button asChild variant="outline" className="mb-10"><Link to="/programs">All programs</Link></Button>
           </div>
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-5">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {thematic.map((p) => (
-              <Link key={p.slug} to="/programs/$slug" params={{ slug: p.slug }} className="group bg-card p-7 transition hover:bg-navy">
+              <Link key={p.slug} to="/programs/$slug" params={{ slug: p.slug }} className="group min-w-0 bg-card p-5 transition hover:bg-navy xl:p-7">
                 <p.icon className="h-8 w-8 text-accent" aria-hidden />
                 <h3 className="mt-6 text-lg font-bold group-hover:text-navy-foreground">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground group-hover:text-navy-foreground/80">{p.summary}</p>
@@ -179,9 +179,9 @@ function Home() {
               const n = PROJECTS.filter((p) => p.province === prov).length;
               const office = ORG.offices.find((o) => o.city === prov);
               return (
-                <li key={prov} className="rounded-2xl border border-navy-foreground/15 bg-navy-foreground/5 p-6">
+                <li key={prov} className="min-w-0 rounded-2xl border border-navy-foreground/15 bg-navy-foreground/5 p-4 sm:p-6">
                   <MapPin className="h-5 w-5 text-accent" aria-hidden />
-                  <p className="mt-3 font-display text-xl font-bold">{prov}</p>
+                  <p className="mt-3 break-words font-display text-base font-bold sm:text-xl">{prov}</p>
                   <p className="text-sm opacity-75">{office ? office.type : "Project location"}{n ? ` · ${n} project${n > 1 ? "s" : ""}` : ""}</p>
                 </li>
               );
@@ -199,16 +199,16 @@ function Home() {
           <div className="mt-6"><Todo>Executive Director name and approved message</Todo></div>
         </div>
         <div>
-          <div className="flex items-end justify-between">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
             <SectionHeading eyebrow="News & events" title="Latest from PWSO" />
             <Link to="/news" className="mb-10 text-sm font-semibold text-primary hover:underline">All news</Link>
           </div>
           <ul className="divide-y divide-border">
             {NEWS.map((n) => (
               <li key={n.slug}>
-                <Link to="/news/$slug" params={{ slug: n.slug }} className="group flex gap-5 py-5">
-                  <span className="flex w-28 shrink-0 items-center gap-1.5 text-xs text-muted-foreground"><Calendar className="h-3.5 w-3.5" />{new Date(n.date).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}</span>
-                  <span>
+                <Link to="/news/$slug" params={{ slug: n.slug }} className="group grid min-w-0 gap-2 py-5 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-5">
+                  <span className="flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground"><Calendar className="h-3.5 w-3.5 shrink-0" />{new Date(n.date).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}</span>
+                  <span className="min-w-0">
                     <span className="text-xs font-semibold text-accent-foreground">{n.category}</span>
                     <span className="block font-semibold text-heading group-hover:text-primary">{n.title}</span>
                   </span>

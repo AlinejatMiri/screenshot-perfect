@@ -28,15 +28,15 @@ export function PageHero({
           <ol className="flex flex-wrap items-center gap-1.5 opacity-80">
             <li><Link to="/" className="hover:text-accent">Home</Link></li>
             {crumbs.map((c) => (
-              <li key={c.label} className="flex items-center gap-1.5">
-                <ChevronRight className="h-3 w-3" aria-hidden />
+              <li key={c.label} className="flex min-w-0 items-center gap-1.5 break-words">
+                <ChevronRight className="h-3 w-3 shrink-0" aria-hidden />
                 {c.to ? <Link to={c.to} className="hover:text-accent">{c.label}</Link> : <span aria-current="page">{c.label}</span>}
               </li>
             ))}
           </ol>
         </nav>
         {eyebrow && <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-accent">{eyebrow}</p>}
-        <h1 className="max-w-3xl text-4xl font-extrabold text-navy-foreground md:text-5xl">{title}</h1>
+        <h1 className="max-w-3xl break-words text-3xl font-extrabold text-navy-foreground sm:text-4xl lg:text-5xl">{title}</h1>
         {intro && <p className="mt-5 max-w-2xl text-lg leading-relaxed opacity-85">{intro}</p>}
         {children}
       </div>
@@ -46,7 +46,7 @@ export function PageHero({
 
 export function SectionHeading({ eyebrow, title, intro, center }: { eyebrow?: string; title: string; intro?: string; center?: boolean }) {
   return (
-    <div className={`mb-10 max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
+    <div className={`mb-10 min-w-0 max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
       {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
       <h2 className="text-3xl font-extrabold md:text-4xl">{title}</h2>
       <span className={`accent-rule mt-4 ${center ? "mx-auto" : ""}`} />

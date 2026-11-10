@@ -35,23 +35,23 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50">
       <TopBar />
       <div className="border-b border-border bg-card/95 backdrop-blur">
-        <div className="container-x flex h-18 items-center justify-between gap-6 py-3">
+        <div className="container-x relative grid h-18 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 py-3 2xl:flex 2xl:gap-4">
           <Logo />
           <nav aria-label="Main" className="hidden 2xl:block">
             <ul className="flex items-center gap-0">
               {NAV.map((item) => (
-                <li key={item.label} className="group relative">
+                <li key={item.label} className="group">
                   <Link
                     to={item.to}
                     activeOptions={{ exact: item.to === "/" }}
-                    className="inline-flex items-center gap-1 whitespace-nowrap rounded-md px-2 py-2 text-sm font-medium text-heading hover:text-primary data-[status=active]:text-primary"
+                    className="inline-flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-2 text-sm font-medium text-heading hover:text-primary data-[status=active]:text-primary"
                   >
                     {item.label}
                     {item.groups && <ChevronDown className="h-3.5 w-3.5 opacity-60 transition group-hover:rotate-180" aria-hidden />}
                   </Link>
                   {item.groups && (
-                    <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                      <div className="flex w-max max-w-[52rem] gap-8 rounded-2xl border border-border bg-popover p-6 shadow-lift">
+                    <div className="invisible absolute inset-x-8 top-full z-50 pt-3 opacity-0 transition duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                      <div className="flex w-full gap-6 rounded-2xl border border-border bg-popover p-6 shadow-lift">
                         {item.intro && (
                           <div className="w-52 shrink-0 border-r border-border pr-6">
                             <span className="accent-rule mb-3" />
@@ -60,7 +60,7 @@ export function SiteHeader() {
                           </div>
                         )}
                         {item.groups.map((g) => (
-                          <div key={g.title} className="w-52">
+                          <div key={g.title} className="min-w-0 flex-1">
                             <p className="eyebrow mb-3">{g.title}</p>
                             <ul className="space-y-1">
                               {g.links.map((l) => (
@@ -81,21 +81,23 @@ export function SiteHeader() {
               ))}
             </ul>
           </nav>
-          <div className="flex items-center gap-2">
-            <Button asChild variant="outline" className="hidden md:inline-flex">
+          <div className="flex shrink-0 items-center gap-2">
+            <Button asChild variant="outline" className="hidden md:inline-flex 2xl:hidden">
               <Link to="/contact">Contact Us</Link>
             </Button>
             <Button asChild variant="accent" className="hidden sm:inline-flex">
               <Link to="/get-involved/$section" params={{ section: "support-us" }}>Support Us</Link>
             </Button>
-            <button
-              className="rounded-md p-2 text-heading 2xl:hidden"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="shrink-0 text-heading 2xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
             >
               {open ? <X /> : <Menu />}
-            </button>
+            </Button>
           </div>
         </div>
         {open && (
@@ -103,19 +105,21 @@ export function SiteHeader() {
             <ul className="container-x py-3">
               {NAV.map((item) => (
                 <li key={item.label} className="border-b border-border last:border-0">
-                  <div className="flex items-center justify-between">
+                  <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
                     <Link to={item.to} onClick={() => setOpen(false)} className="block py-3 font-semibold text-heading">
                       {item.label}
                     </Link>
                     {item.groups && (
-                      <button
+                      <Button
+                        variant="ghost"
+                        size="icon"
                         aria-label={`Show ${item.label} pages`}
                         aria-expanded={expanded === item.label}
                         onClick={() => setExpanded(expanded === item.label ? null : item.label)}
                         className="p-2"
                       >
                         <ChevronDown className={`h-4 w-4 transition ${expanded === item.label ? "rotate-180" : ""}`} />
-                      </button>
+                      </Button>
                     )}
                   </div>
                   {expanded === item.label && item.groups && (

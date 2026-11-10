@@ -24,12 +24,12 @@ export function ProjectsBrowser({ status }: { status?: Project["status"] }) {
   const [sort, setSort] = useState<"new" | "old">("new");
   const [view, setView] = useState<"grid" | "list">("grid");
   const results = useMemo(() => filterProjects(base, f).sort((a, b) => (sort === "new" ? b.year - a.year : a.year - b.year)), [base, f, sort]);
-  const sel = "h-10 rounded-lg border border-input bg-card px-3 text-sm";
+  const sel = "h-10 min-w-0 w-full rounded-lg border border-input bg-card px-3 text-sm";
   const set = (k: keyof typeof f) => (e: { target: { value: string } }) => setF({ ...f, [k]: e.target.value });
   return (
     <div>
-      <div className="mb-8 grid gap-3 rounded-2xl border border-border bg-card p-4 shadow-card md:grid-cols-6">
-        <label className="relative md:col-span-2">
+      <div className="mb-8 grid grid-cols-[minmax(0,1fr)] gap-3 rounded-2xl border border-border bg-card p-4 shadow-card sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <label className="relative min-w-0 sm:col-span-2 xl:col-span-2">
           <span className="sr-only">Search projects</span>
           <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <input value={f.q} onChange={set("q")} placeholder="Search projects" className={`${sel} w-full pl-9`} />
@@ -51,9 +51,9 @@ export function ProjectsBrowser({ status }: { status?: Project["status"] }) {
           {uniq(PROJECTS.map((p) => p.year)).map((x) => <option key={x}>{x}</option>)}
         </select>
       </div>
-      <div className="mb-5 flex items-center justify-between text-sm">
+      <div className="mb-5 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2 text-sm">
         <p role="status">{results.length} project{results.length === 1 ? "" : "s"}</p>
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-1 sm:gap-2">
           <select aria-label="Sort" value={sort} onChange={(e) => setSort(e.target.value as "new" | "old")} className={sel}>
             <option value="new">Newest first</option>
             <option value="old">Oldest first</option>
