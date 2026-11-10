@@ -1,19 +1,16 @@
 import { Link } from "@tanstack/react-router";
+import logoAsset from "@/assets/pwso-logo.png.asset.json";
 
-// Wordmark placeholder until the official PWSO logo file is supplied.
 export function Logo({ inverted = false }: { inverted?: boolean }) {
   return (
-    <Link to="/" className="flex items-center gap-3" aria-label="PWSO home">
-      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary font-display text-sm font-extrabold text-primary-foreground">
-        PW<span className="text-accent">SO</span>
-      </span>
-      <span className="whitespace-nowrap leading-tight">
-        <span className={`block font-display text-[0.95rem] font-extrabold ${inverted ? "text-navy-foreground" : "text-heading"}`}>
-          <span className="2xl:hidden">PWSO</span>
-          <span className="hidden 2xl:inline">Poor Women Support Organization</span>
-        </span>
-        <span className="hidden text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent sm:block xl:hidden 2xl:block">Partnership for Change</span>
-      </span>
+    <Link to="/" className="inline-flex shrink-0 items-center" aria-label="PWSO home">
+      <img
+        src={logoAsset.url}
+        alt="Poor Women Support Organization (PWSO)"
+        width={1080}
+        height={540}
+        className={inverted ? "h-20 w-40 object-contain" : "h-12 w-24 object-contain"}
+      />
     </Link>
   );
 }
