@@ -1,7 +1,7 @@
 import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { lazy, Suspense } from "react";
-import { ArrowRight, Calendar, FolderCheck, Map, MapPin, Pause, Play } from "lucide-react";
+import { ArrowRight, Calendar, FolderCheck, HeartHandshake, Map, MapPin, Pause, Play, Users } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/common/PageHero";
@@ -164,14 +164,16 @@ function Hero() {
 }
 
 function Stats() {
+  // TODO: replace "—" with verified figures for families helped and women impacted.
   const stats = [
-    { v: ORG.established, l: "Established", icon: Calendar },
-    { v: "4203", l: "Ministry of Economy license", icon: FolderCheck },
-    { v: "Afghanistan", l: "National NGO", icon: MapPin },
+    { v: String(PROJECTS.length), l: "Projects Reached", icon: FolderCheck },
+    { v: "—", l: "Families Helped", icon: Users },
+    { v: String(ZONES.length), l: "Regions Covered", icon: Map },
+    { v: "—", l: "Women Impacted", icon: HeartHandshake },
   ];
   return (
-    <section aria-label="PWSO organization details" className="border-b border-border bg-card">
-      <div className="container-x grid grid-cols-1 py-4 sm:grid-cols-3 md:py-6">
+    <section aria-label="PWSO impact numbers" className="border-b border-border bg-card">
+      <div className="container-x grid grid-cols-2 py-4 md:py-6 lg:grid-cols-4">
         {stats.map((s) => (
           <div
             key={s.l}
