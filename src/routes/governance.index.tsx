@@ -3,14 +3,17 @@ import { SectionOverview } from "@/components/common/SectionPages";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/governance/")({
-  head: () => seo("Governance", "How PWSO is governed, structured and held accountable."),
+  head: () =>
+    seo("Governance", "How PWSO is governed, structured and held accountable.", "/governance"),
   component: () => (
     <SectionOverview
       sectionKey="governance"
       base="governance"
-      
+
       link={(slug, children, className) => (
-        <Link to="/governance/$section" params={{ section: slug }} className={className}>{children}</Link>
+        <Link to="/governance/$section" params={{ section: slug }} className={className}>
+          {children}
+        </Link>
       )}
     />
   ),

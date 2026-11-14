@@ -14,6 +14,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { ORG } from "@/data/site";
 
 function NotFoundComponent() {
   return (
@@ -84,13 +85,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "PWSO — Poor Women Support Organization" },
-      { name: "description", content: "Poor Women Support Organization (PWSO) — a national NGO in Afghanistan. Partnership for Change." },
+      {
+        name: "description",
+        content:
+          "Poor Women Support Organization (PWSO) — a national non-governmental, non-profit organization in Afghanistan. Partnership for Change.",
+      },
       { name: "author", content: "PWSO" },
       { property: "og:title", content: "PWSO — Poor Women Support Organization" },
-      { property: "og:description", content: "A national NGO in Afghanistan empowering women and strengthening communities since 2017." },
+      {
+        property: "og:description",
+        content: "A national NGO in Afghanistan supporting women and marginalized communities.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-          ],
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NGO",
+          name: ORG.name,
+          alternateName: ORG.short,
+          url: `https://${ORG.website}`,
+          email: ORG.email,
+          telephone: ORG.phone,
+          foundingDate: String(ORG.established),
+          description: "A national non-governmental, non-profit organization in Afghanistan.",
+          logo: `https://${ORG.website}/favicon.png`,
+        }),
+      },
+    ],
     links: [
       {
         rel: "stylesheet",
@@ -98,7 +123,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap",
+      },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
@@ -128,7 +156,12 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2">Skip to content</a>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2"
+      >
+        Skip to content
+      </a>
       <SiteHeader />
       <main id="main">
         <Outlet />

@@ -9,6 +9,12 @@ export type Project = {
   program: string; // program slug
   status: "Ongoing" | "Completed";
   overview: string;
+  duration: string | null;
+  districts: string[] | null;
+  objectives: string[] | null;
+  activities: string[] | null;
+  results: string[] | null;
+  gallery: { src: string; alt: string }[] | null;
   needsVerification: string[];
 };
 
@@ -23,7 +29,14 @@ export const PROJECTS: Project[] = [
     beneficiaries: "25 women",
     program: "economic-empowerment",
     status: "Completed",
-    overview: "Vocational training for women in preparing and marketing various types of pickles to generate household income.",
+    overview:
+      "Vocational training for women in preparing and marketing various types of pickles to generate household income.",
+    duration: null,
+    districts: null,
+    objectives: null,
+    activities: null,
+    results: null,
+    gallery: null,
     needsVerification: ["Project duration", "District", "Achieved results"],
   },
   {
@@ -36,7 +49,14 @@ export const PROJECTS: Project[] = [
     beneficiaries: "2,000 female and male students",
     program: "education",
     status: "Completed",
-    overview: "A program supporting access to quality education for female and male students in Badakhshan.",
+    overview:
+      "A program supporting access to quality education for female and male students in Badakhshan.",
+    duration: null,
+    districts: null,
+    objectives: null,
+    activities: null,
+    results: null,
+    gallery: null,
     needsVerification: ["Project duration", "Districts", "Achieved results"],
   },
   {
@@ -49,12 +69,20 @@ export const PROJECTS: Project[] = [
     beneficiaries: "150 men and women",
     program: "women-empowerment",
     status: "Completed",
-    overview: "Awareness raising with men and women on unlawful traditional practices affecting women.",
+    overview:
+      "Awareness raising with men and women on unlawful traditional practices affecting women.",
+    duration: null,
+    districts: null,
+    objectives: null,
+    activities: null,
+    results: null,
+    gallery: null,
     needsVerification: ["Project duration", "District", "Achieved results"],
   },
   {
     slug: "seasonal-fruits-vegetables-processing-2025",
-    title: "Capacity Building Program for Women in Processing Seasonal Fruits and Vegetables and Marketing",
+    title:
+      "Capacity Building Program for Women in Processing Seasonal Fruits and Vegetables and Marketing",
     year: 2025,
     donor: "AALCC contribution",
     budgetUsd: 45000,
@@ -62,8 +90,22 @@ export const PROJECTS: Project[] = [
     beneficiaries: "250 women",
     program: "agriculture-climate-change",
     status: "Ongoing",
-    overview: "Building women's skills in processing seasonal fruits and vegetables and connecting their products to markets.",
-    needsVerification: ["Project status", "Duration", "District", "Donor full name"],
+    overview:
+      "Building women's skills in processing seasonal fruits and vegetables and connecting their products to markets.",
+    duration: null,
+    districts: null,
+    objectives: null,
+    activities: null,
+    results: null,
+    gallery: null,
+    needsVerification: [
+      "Project status",
+      "Duration",
+      "District",
+      "Donor full name",
+      "Budget",
+      "Beneficiary figures",
+    ],
   },
 ];
 

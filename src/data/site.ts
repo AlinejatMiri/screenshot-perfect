@@ -13,9 +13,69 @@ export const ORG = {
     { city: "Badakhshan", type: "Sub Office" },
     { city: "Kunduz", type: "Sub Office" },
   ],
+  profileCoverageAreas: [
+    "Badakhshan",
+    "Nuristan",
+    "Kunar",
+    "Nangarhar",
+    "Kabul",
+    "Parwan",
+    "Panjshir",
+    "Kapisa",
+    "Maidan Wardak",
+    "Herat",
+    "Farah",
+    "Nimroz",
+    "Kandahar",
+    "Paktika",
+    "Khost",
+    "Paktia",
+    "Logar",
+    "Uruzgan",
+    "Daikundi",
+    "Ghor",
+    "Takhar",
+    "Kunduz",
+    "Balkh",
+    "Jawzjan",
+    "Faryab",
+    "Sar-e Pol",
+    "Bamyan",
+    "Samangan",
+    "Baghlan",
+    "Badghis",
+    "Helmand",
+    "Zabul",
+    "Ghazni",
+  ],
 };
 
-export type NavLink = { label: string; to: string; desc?: string };
+export type Zone = {
+  name: string;
+  provinces: string[];
+  color: string;
+};
+
+export const ZONES: Zone[] = [
+  {
+    name: "Central Zone",
+    provinces: ["Kabul", "Parwan", "Kapisa", "Panjshir", "Logar", "Wardak", "Bamyan", "Daikundi"],
+    color: "#1E40AF",
+  },
+  {
+    name: "North Zone",
+    provinces: ["Balkh", "Jowzjan", "Sar-e Pol", "Faryab", "Samangan", "Baghlan", "Kunduz"],
+    color: "#059669",
+  },
+  { name: "Northeast Zone", provinces: ["Badakhshan", "Takhar"], color: "#7C3AED" },
+  { name: "East Zone", provinces: ["Nangarhar", "Laghman", "Kunar", "Nuristan"], color: "#DC2626" },
+  { name: "Southeast Zone", provinces: ["Paktia", "Paktika", "Khost", "Ghazni"], color: "#D97706" },
+  { name: "South Zone", provinces: ["Kandahar", "Helmand", "Uruzgan", "Zabul"], color: "#BE185D" },
+  { name: "West Zone", provinces: ["Herat", "Ghor", "Badghis"], color: "#4338CA" },
+  { name: "Southwest Zone", provinces: ["Nimroz", "Farah"], color: "#0D9488" },
+];
+
+export type NavLink = { label: string; to: string; desc?: string; hash?: string };
 export type NavGroup = { title: string; links: NavLink[] };
 export type NavItem = { label: string; to: string; intro?: string; groups?: NavGroup[] };
 
@@ -24,15 +84,20 @@ export const NAV: NavItem[] = [
   {
     label: "About PWSO",
     to: "/about",
-    intro: "A national, non-profit organization working with women and marginalized communities since 2017.",
+    intro:
+      "A national, non-profit organization working with women and marginalized communities since 2017.",
     groups: [
       {
         title: "Who we are",
         links: [
           { label: "Who We Are", to: "/about/who-we-are", desc: "Background and registration" },
-          { label: "Vision, Mission & Goals", to: "/about/vision-mission-goals", desc: "What guides our work" },
+          {
+            label: "Vision, Mission & Goals",
+            to: "/about/vision-mission-goals",
+            desc: "What guides our work",
+          },
           { label: "History", to: "/about/history", desc: "Our journey since 2017" },
-          { label: "Core Values", to: "/about/core-values", desc: "Six principles we hold" },
+          { label: "Core Values", to: "/about/core-values", desc: "Four principles we hold" },
         ],
       },
       {
@@ -41,7 +106,11 @@ export const NAV: NavItem[] = [
           { label: "Leadership", to: "/about/leadership", desc: "Message from leadership" },
           { label: "Mandate", to: "/about/mandate", desc: "Our institutional mandate" },
           { label: "Approach", to: "/about/approach", desc: "Participation and sustainability" },
-          { label: "Organizational Capacity", to: "/about/organizational-capacity", desc: "Systems and experience" },
+          {
+            label: "Organizational Capacity",
+            to: "/about/organizational-capacity",
+            desc: "Systems and experience",
+          },
         ],
       },
       {
@@ -82,11 +151,31 @@ export const NAV: NavItem[] = [
       },
       {
         title: "Who we serve",
-        links: [{ label: "Target Groups", to: "/target-groups", desc: "Women, youth and rural communities" }],
+        links: [
+          {
+            label: "Target Groups",
+            to: "/target-groups",
+            desc: "Women, youth and rural communities",
+          },
+        ],
       },
     ],
   },
-  { label: "Where We Work", to: "/where-we-work" },
+  {
+    label: "Where We Work",
+    to: "/where-we-work",
+    groups: [
+      {
+        title: "Sections",
+        links: [
+          { label: "Our Reach", to: "/where-we-work", hash: "our-reach" },
+          { label: "Provinces Where We Work", to: "/where-we-work", hash: "provinces" },
+          { label: "Regional Impact", to: "/where-we-work", hash: "regional-impact" },
+          { label: "Featured Stories", to: "/where-we-work", hash: "featured-stories" },
+        ],
+      },
+    ],
+  },
   {
     label: "Projects",
     to: "/projects",
@@ -147,39 +236,22 @@ export const NAV: NavItem[] = [
     ],
   },
   {
-    label: "News & Events",
-    to: "/news",
-    groups: [
-      {
-        title: "Newsroom",
-        links: [
-          { label: "All News", to: "/news" },
-          { label: "Announcements", to: "/news/announcements" },
-          { label: "Events", to: "/news/events" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Get Involved",
+    label: "Opportunities",
     to: "/get-involved",
     groups: [
       {
-        title: "Join us",
+        title: "Opportunities",
         links: [
-          { label: "Partner With Us", to: "/get-involved/partner" },
-          { label: "Volunteer", to: "/get-involved/volunteer" },
-          { label: "Careers", to: "/get-involved/careers" },
-          { label: "Tenders", to: "/get-involved/tenders" },
-          { label: "Support Us", to: "/get-involved/support-us" },
+          { label: "RFP", to: "/get-involved/rfp" },
+          { label: "RFQ", to: "/get-involved/rfq" },
+          { label: "Job Announcement", to: "/get-involved/job-announcement" },
         ],
       },
       {
-        title: "Accountability",
+        title: "Our Services",
         links: [
-          { label: "Feedback", to: "/feedback" },
-          { label: "Complaints", to: "/complaints" },
-          { label: "Contact", to: "/contact" },
+          { label: "Training", to: "/get-involved/training" },
+          { label: "Events", to: "/get-involved/events" },
         ],
       },
     ],

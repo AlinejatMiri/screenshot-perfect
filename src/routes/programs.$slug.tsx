@@ -13,7 +13,10 @@ export const Route = createFileRoute("/programs/$slug")({
     if (!p) throw notFound();
     return { title: p.title, summary: p.summary };
   },
-  head: ({ loaderData }) => (loaderData ? seo(loaderData.title, loaderData.summary) : { meta: [{ title: "Program not found | PWSO" }, { name: "robots", content: "noindex" }] }),
+  head: ({ loaderData, params }) =>
+    loaderData
+      ? seo(loaderData.title, loaderData.summary, `/programs/${params.slug}`)
+      : { meta: [{ title: "Program not found | PWSO" }, { name: "robots", content: "noindex" }] },
   component: ProgramPage,
 });
 
@@ -23,39 +26,105 @@ function ProgramPage() {
   const related = PROJECTS.filter((x) => x.program === slug);
   const provinces = [...new Set(related.map((r) => r.province))];
   const List = ({ items }: { items: string[] }) => (
-    <ul className="space-y-2.5">{items.map((x) => <li key={x} className="flex gap-2.5"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />{x}</li>)}</ul>
+    <ul className="space-y-2.5">
+      {items.map((x) => (
+        <li key={x} className="flex gap-2.5">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+          {x}
+        </li>
+      ))}
+    </ul>
   );
   return (
     <>
-      <PageHero eyebrow={p.kind} title={p.title} intro={p.summary} crumbs={[{ label: "What We Do", to: "/programs" }, { label: p.title }]}>
+      <PageHero
+        eyebrow={p.kind}
+        title={p.title}
+        intro={p.summary}
+        crumbs={[{ label: "What We Do", to: "/programs" }, { label: p.title }]}
+      >
         <p.icon className="mt-8 h-10 w-10 text-accent" aria-hidden />
       </PageHero>
-      <section className={`container-x grid gap-10 py-16 ${p.layout === "split" ? "lg:grid-cols-2" : ""}`}>
+      <section
+        className={`container-x grid gap-10 py-16 ${p.layout === "split" ? "lg:grid-cols-2" : ""}`}
+      >
         <div className="rounded-2xl bg-secondary p-8">
           <h2 className="text-2xl font-bold">Context and challenges</h2>
           <p className="mt-3 leading-relaxed">{p.context}</p>
         </div>
         <div className="rounded-2xl border border-border bg-card p-8 shadow-card">
-          <h2 className="flex items-center gap-2 text-2xl font-bold"><Target className="h-6 w-6 text-accent" />Objectives</h2>
-          <div className="mt-4"><List items={p.objectives} /></div>
+          <h2 className="flex items-center gap-2 text-2xl font-bold">
+            <Target className="h-6 w-6 text-accent" />
+            Objectives
+          </h2>
+          <div className="mt-4">
+            <List items={p.objectives} />
+          </div>
         </div>
       </section>
       <section className="container-x grid gap-10 pb-16 md:grid-cols-3">
-        <div><h2 className="mb-4 text-xl font-bold">Main activities</h2><List items={p.activities} /></div>
-        <div><h2 className="mb-4 text-xl font-bold">Target groups</h2><List items={p.targets} /></div>
+        <div>
+          <h2 className="mb-4 text-xl font-bold">Main activities</h2>
+          <List items={p.activities} />
+        </div>
+        <div>
+          <h2 className="mb-4 text-xl font-bold">Target groups</h2>
+          <List items={p.targets} />
+        </div>
         <div>
           <h2 className="mb-4 text-xl font-bold">Geographic coverage</h2>
-          {provinces.length ? <List items={provinces} /> : <Todo>Verified provinces for this program</Todo>}
-          <div className="mt-6"><Todo>Verified impact indicators</Todo></div>
+          {provinces.length ? (
+            <List items={provinces} />
+          ) : (
+            <Todo>Verified provinces for this program</Todo>
+          )}
+          <div className="mt-6">
+            <Todo>Verified impact indicators</Todo>
+          </div>
         </div>
       </section>
       <section className="container-x pb-8">
         <h2 className="mb-6 text-2xl font-bold">Related projects</h2>
         {related.length ? (
-          <div className="grid gap-5 md:grid-cols-2">{related.map((r) => <ProjectCard key={r.slug} p={r} />)}</div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {related.map((r) => (
+              <ProjectCard key={r.slug} p={r} />
+            ))}
+          </div>
         ) : (
-          <p className="text-muted-foreground">No projects are listed under this program yet. <Link to="/projects" className="font-semibold text-primary">See all projects</Link>.</p>
+          <p className="text-muted-foreground">
+            No projects are listed under this program yet.{" "}
+            <Link to="/projects" className="font-semibold text-primary">
+              See all projects
+            </Link>
+            .
+          </p>
         )}
+      </section>
+      <section className="container-x grid gap-6 pb-12 lg:grid-cols-2">
+        <article className="rounded-2xl border border-border bg-card p-6 shadow-card">
+          <h2 className="text-xl font-bold">Implementation approach</h2>
+          <p className="mt-3 leading-relaxed text-muted-foreground">
+            The activities above describe PWSO’s focus in {p.title.toLowerCase()}. Delivery methods,
+            timelines and locations vary by project; see project records for the details currently
+            available.
+          </p>
+        </article>
+        <article className="rounded-2xl border border-border bg-card p-6 shadow-card">
+          <h2 className="text-xl font-bold">Related news and resources</h2>
+          <p className="mt-3 leading-relaxed text-muted-foreground">
+            No verified program-specific news or approved resources are linked to this page yet.
+            Browse the newsroom and resource library for current published material.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link to="/news" className="font-semibold text-primary hover:underline">
+              News &amp; events <span aria-hidden="true">→</span>
+            </Link>
+            <Link to="/resources" className="font-semibold text-primary hover:underline">
+              Resources <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </article>
       </section>
       <CTASection title={`Partner with us on ${p.title}`} />
     </>

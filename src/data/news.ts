@@ -1,43 +1,91 @@
+import heroAgriculture from "@/assets/hero-agriculture.jpg";
+import heroEducation from "@/assets/hero-education.jpg";
+import heroLivelihoods from "@/assets/hero-livelihoods.jpg";
+
 export type NewsItem = {
   slug: string;
   title: string;
   date: string;
   category: "News" | "Announcement" | "Event";
+  image: string;
   excerpt: string;
   body: string[];
-  sample: true;
 };
 
-// Sample entries — replace with approved PWSO news before publication.
+// Demonstration content only — replace with approved public updates before launch.
 export const NEWS: NewsItem[] = [
   {
-    slug: "women-processing-training-kunduz",
-    title: "Women begin training in fruit and vegetable processing in Kunduz",
-    date: "2025-06-10",
+    slug: "sample-community-garden",
+    title: "Community garden session brings neighbours together",
+    date: "2026-10-24",
     category: "News",
-    excerpt: "250 women are building skills to process and market seasonal produce.",
+    image: heroAgriculture,
+    excerpt:
+      "A sample field update showing how a community activity can be presented on the website.",
     body: [
-      "PWSO has started a capacity building program for women in processing seasonal fruits and vegetables and marketing in Kunduz province.",
-      "The program aims to reach 250 women with practical skills and links to local markets.",
+      "This is demonstration content for the website layout. It shows the ideal length and structure for a short field update.",
+      "Replace this text, image and date with an approved story, participant consent details and verified results before publication.",
     ],
-    sample: true,
   },
   {
-    slug: "pwso-profile-2026",
-    title: "PWSO Organizational Profile 2026 coming soon",
-    date: "2026-01-15",
+    slug: "sample-skills-workshop",
+    title: "Registration opens for a skills workshop",
+    date: "2026-10-16",
     category: "Announcement",
-    excerpt: "Our updated organizational profile will be available to download.",
-    body: ["The updated PWSO organizational profile will be published in the Resources section."],
-    sample: true,
+    image: heroLivelihoods,
+    excerpt: "An example announcement card with a clear title, date and short call to action.",
+    body: [
+      "This placeholder demonstrates an announcement detail page.",
+      "Future updates can include eligibility, location, application instructions, a contact point and the closing date.",
+    ],
   },
   {
-    slug: "partners-coordination-meeting",
-    title: "Partners coordination meeting",
-    date: "2026-03-01",
+    slug: "sample-learning-exchange",
+    title: "Learning exchange planned with local educators",
+    date: "2026-10-08",
     category: "Event",
-    excerpt: "An event placeholder for partner coordination.",
-    body: ["Event details to be confirmed."],
-    sample: true,
+    image: heroEducation,
+    excerpt:
+      "A sample event listing for a conversation on inclusive learning and community support.",
+    body: [
+      "This demonstration event entry illustrates how upcoming activities can be shared with visitors.",
+      "Add verified logistics, accessibility information and registration details when a real event is confirmed.",
+    ],
+  },
+  {
+    slug: "sample-wash-session",
+    title: "Hygiene promotion sessions continue in Kabul districts",
+    date: "2026-09-30",
+    category: "News",
+    image: heroAgriculture,
+    excerpt: "A sample field update on community hygiene promotion activities and volunteer work.",
+    body: [
+      "This is demonstration content showing a second field update in the news list layout.",
+      "Replace this text, image and date with an approved story and verified results before publication.",
+    ],
+  },
+  {
+    slug: "sample-tailoring-course",
+    title: "Applications open for the next tailoring course",
+    date: "2026-09-12",
+    category: "Announcement",
+    image: heroLivelihoods,
+    excerpt: "An example announcement demonstrating a second call for applications.",
+    body: [
+      "This placeholder demonstrates how repeated announcements appear alongside each other.",
+      "Future updates can include eligibility, location, application instructions and the closing date.",
+    ],
+  },
+  {
+    slug: "sample-teacher-training",
+    title: "Teachers join a classroom support workshop",
+    date: "2026-08-25",
+    category: "Event",
+    image: heroEducation,
+    excerpt: "A sample event recap showing how a completed activity can be summarized.",
+    body: [
+      "This demonstration entry shows a completed event listing with a short recap structure.",
+      "Add verified attendance, outcomes and participant consent details when a real recap is approved.",
+    ],
   },
 ];

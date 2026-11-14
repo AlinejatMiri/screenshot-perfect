@@ -1,4 +1,4 @@
-export function seo(title: string, description: string) {
+export function seo(title: string, description: string, path?: string) {
   const t = `${title} | PWSO`;
   return {
     meta: [
@@ -7,7 +7,11 @@ export function seo(title: string, description: string) {
       { property: "og:title", content: t },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      ...(path ? [{ property: "og:url", content: `https://www.pwsongo.org${path}` }] : []),
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: t },
+      { name: "twitter:description", content: description },
     ],
+    ...(path ? { links: [{ rel: "canonical", href: `https://www.pwsongo.org${path}` }] } : {}),
   };
 }

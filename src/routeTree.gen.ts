@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as ComplaintsRouteImport } from './routes/complaints'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonationRouteImport } from './routes/donation'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -57,6 +58,11 @@ const ComplaintsRoute = ComplaintsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonationRoute = DonationRouteImport.update({
+  id: '/donation',
+  path: '/donation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -190,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/accessibility': typeof AccessibilityRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
+  '/donation': typeof DonationRoute
   '/faq': typeof FaqRoute
   '/feedback': typeof FeedbackRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/accessibility': typeof AccessibilityRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
+  '/donation': typeof DonationRoute
   '/faq': typeof FaqRoute
   '/feedback': typeof FeedbackRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -253,6 +261,7 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/complaints': typeof ComplaintsRoute
   '/contact': typeof ContactRoute
+  '/donation': typeof DonationRoute
   '/faq': typeof FaqRoute
   '/feedback': typeof FeedbackRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/complaints'
     | '/contact'
+    | '/donation'
     | '/faq'
     | '/feedback'
     | '/privacy-policy'
@@ -317,6 +327,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/complaints'
     | '/contact'
+    | '/donation'
     | '/faq'
     | '/feedback'
     | '/privacy-policy'
@@ -348,6 +359,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/complaints'
     | '/contact'
+    | '/donation'
     | '/faq'
     | '/feedback'
     | '/privacy-policy'
@@ -380,6 +392,7 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   ComplaintsRoute: typeof ComplaintsRoute
   ContactRoute: typeof ContactRoute
+  DonationRoute: typeof DonationRoute
   FaqRoute: typeof FaqRoute
   FeedbackRoute: typeof FeedbackRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
@@ -435,6 +448,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donation': {
+      id: '/donation'
+      path: '/donation'
+      fullPath: '/donation'
+      preLoaderRoute: typeof DonationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -620,6 +640,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccessibilityRoute: AccessibilityRoute,
   ComplaintsRoute: ComplaintsRoute,
   ContactRoute: ContactRoute,
+  DonationRoute: DonationRoute,
   FaqRoute: FaqRoute,
   FeedbackRoute: FeedbackRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,

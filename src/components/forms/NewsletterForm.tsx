@@ -13,25 +13,42 @@ export function NewsletterForm() {
       onSubmit={(e) => {
         e.preventDefault();
         const r = schema.safeParse(email);
-        if (!r.success) return setMsg({ ok: false, text: r.error.issues[0]?.message ?? "Invalid email" });
-        setMsg({ ok: true, text: "Thank you — you'll hear from us soon." });
-        setEmail("");
+        if (!r.success)
+          return setMsg({ ok: false, text: r.error.issues[0]?.message ?? "Invalid email" });
+        setMsg({
+          ok: false,
+          text: "Newsletter sign-up is not connected yet. Your address has not been submitted.",
+        });
       }}
       className="space-y-2"
     >
       <div className="grid grid-cols-[minmax(0,1fr)_auto] overflow-hidden rounded-lg border border-sidebar-border bg-sidebar-accent focus-within:ring-2 focus-within:ring-accent">
-        <label htmlFor="nl-email" className="sr-only">Email address</label>
+        <label htmlFor="nl-email" className="sr-only">
+          Email address
+        </label>
         <input
           id="nl-email"
           type="email"
+          required
+          aria-describedby={msg ? "nl-status" : undefined}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email"
           className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-navy-foreground placeholder:opacity-60 focus:outline-none"
         />
-        <Button type="submit" variant="accent" className="h-full shrink-0 rounded-none px-3">Subscribe</Button>
+        <Button type="submit" variant="accent" className="h-full shrink-0 rounded-none px-3">
+          Subscribe
+        </Button>
       </div>
-      {msg && <p role="status" className={`text-xs ${msg.ok ? "text-accent" : "text-destructive"}`}>{msg.text}</p>}
+      {msg && (
+        <p
+          id="nl-status"
+          role="status"
+          className={`text-xs ${msg.ok ? "text-accent" : "text-accent"}`}
+        >
+          {msg.text}
+        </p>
+      )}
     </form>
   );
 }

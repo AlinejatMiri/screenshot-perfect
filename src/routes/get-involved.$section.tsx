@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SectionDetail } from "@/components/common/SectionPages";
 import { SECTIONS } from "@/data/pages";
 import { seo } from "@/lib/seo";
-import { Todo } from "@/components/common/PageHero";
+import { OpportunityBoard } from "@/components/common/ListingStates";
 
 export const Route = createFileRoute("/get-involved/$section")({
   loader: ({ params }) => {
@@ -10,7 +10,10 @@ export const Route = createFileRoute("/get-involved/$section")({
     if (!page) throw notFound();
     return { title: page.title, intro: page.intro };
   },
-  head: ({ loaderData }) => (loaderData ? seo(loaderData.title, loaderData.intro) : { meta: [{ title: "Page not found | PWSO" }, { name: "robots", content: "noindex" }] }),
+  head: ({ loaderData, params }) =>
+    loaderData
+      ? seo(loaderData.title, loaderData.intro, `/get-involved/${params.section}`)
+      : { meta: [{ title: "Page not found | PWSO" }, { name: "robots", content: "noindex" }] },
   component: Page,
 });
 
@@ -21,12 +24,14 @@ function Page() {
       sectionKey="get-involved"
       slug={section}
       overviewTo="/get-involved"
-      
+
       link={(slug, children, className) => (
-        <Link to="/get-involved/$section" params={{ section: slug }} className={className}>{children}</Link>
+        <Link to="/get-involved/$section" params={{ section: slug }} className={className}>
+          {children}
+        </Link>
       )}
     >
-      {section === "careers" && <Todo>Vacancy listings and online application (CV upload) — enabled with the admin backend phase</Todo>}
+      <OpportunityBoard category={SECTIONS["get-involved"]!.pages[section]!.title} />
     </SectionDetail>
   );
 }
