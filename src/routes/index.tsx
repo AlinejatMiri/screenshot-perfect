@@ -1,7 +1,7 @@
 import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { lazy, Suspense } from "react";
-import { ArrowRight, BarChart3, Calendar, FolderCheck, HeartHandshake, Map, MapPin, Pause, Play, Users } from "lucide-react";
+import { Activity, ArrowRight, BarChart3, Calendar, FolderCheck, HeartHandshake, Map, MapPin, Pause, Play, Sparkles, Users } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/common/PageHero";
@@ -164,12 +164,16 @@ function Hero() {
 }
 
 function Stats() {
-  // TODO: replace "—" with verified figures for families helped and women impacted.
+  // TODO: replace "—" with verified figures for families helped, women impacted and lives impacted.
   const stats = [
-    { v: String(PROJECTS.length), l: "Projects Reached", icon: FolderCheck },
-    { v: "—", l: "Families Helped", icon: Users },
+    { v: String(ORG.profileCoverageAreas.length), l: "Provinces Reached", icon: MapPin },
+    { v: String(new Date().getFullYear() - ORG.established) + "+", l: "Years of Service", icon: Calendar },
     { v: String(ZONES.length), l: "Regions Covered", icon: Map },
+    { v: String(PROJECTS.length), l: "Projects Implemented", icon: FolderCheck },
+    { v: String(PROJECTS.filter((p) => p.status === "Ongoing").length), l: "Active Projects", icon: Activity },
+    { v: "—", l: "Families Helped", icon: Users },
     { v: "—", l: "Women Impacted", icon: HeartHandshake },
+    { v: "—", l: "Lives Impacted", icon: Sparkles },
   ];
   return (
     <section aria-label="PWSO impact numbers" className="border-b border-border bg-primary/5">
@@ -186,7 +190,7 @@ function Stats() {
             aria-hidden="true"
           />
         </div>
-        <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.l} className="flex min-w-0 flex-col items-center px-3 text-center">
               <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-card text-primary shadow-card transition-transform duration-300 hover:scale-105">
