@@ -1,7 +1,7 @@
 import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { lazy, Suspense } from "react";
-import { ArrowRight, Calendar, FolderCheck, HeartHandshake, Map, MapPin, Pause, Play, Users } from "lucide-react";
+import { ArrowRight, BarChart3, Calendar, FolderCheck, HeartHandshake, Map, MapPin, Pause, Play, Users } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/common/PageHero";
@@ -172,23 +172,33 @@ function Stats() {
     { v: "—", l: "Women Impacted", icon: HeartHandshake },
   ];
   return (
-    <section aria-label="PWSO impact numbers" className="border-b border-border bg-card">
-      <div className="container-x grid grid-cols-2 py-4 md:py-6 lg:grid-cols-4">
-        {stats.map((s) => (
-          <div
-            key={s.l}
-            className="flex min-w-0 flex-col items-center border-border px-3 py-5 text-center sm:border-r sm:last:border-r-0"
-          >
-            <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 hover:bg-primary/20">
-              <s.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
-            </span>
-            <p className="break-words font-display text-2xl font-extrabold leading-tight text-heading md:text-3xl">
-              {s.v}
-            </p>
-            <span className="mt-4 h-0.5 w-7 bg-accent" aria-hidden="true" />
-            <p className="mt-3 text-sm font-medium text-muted-foreground">{s.l}</p>
-          </div>
-        ))}
+    <section aria-label="PWSO impact numbers" className="border-b border-border bg-primary/5">
+      <div className="container-x py-10 md:py-14">
+        <div className="mb-10 flex items-center gap-3">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-card">
+            <BarChart3 className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+          </span>
+          <h2 className="font-display text-2xl font-extrabold tracking-tight text-heading md:text-3xl">
+            Key Impact Numbers
+          </h2>
+          <span
+            className="ml-2 hidden h-0.5 w-16 rounded-full bg-gradient-to-r from-sky to-transparent sm:block"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.l} className="flex min-w-0 flex-col items-center px-3 text-center">
+              <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-card text-primary shadow-card transition-transform duration-300 hover:scale-105">
+                <s.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <p className="break-words font-display text-3xl font-extrabold leading-tight text-heading md:text-4xl">
+                {s.v}
+              </p>
+              <p className="mt-2 text-sm font-medium text-muted-foreground">{s.l}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
